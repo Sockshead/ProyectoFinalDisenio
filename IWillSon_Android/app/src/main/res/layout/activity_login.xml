@@ -71,7 +71,7 @@
 
     <!-- layout/*.xml -->
     <TextView
-        android:id="@+id/escribe_tu_"
+        android:id="@+id/correo1"
         android:layout_width="141dp"
         android:layout_height="29dp"
         android:layout_alignParentLeft="true"
@@ -79,8 +79,8 @@
         android:layout_marginLeft="111dp"
         android:layout_marginTop="267dp"
         android:gravity="center_horizontal"
-        android:text="@string/escribe_tu_"
-        android:textAppearance="@style/escribe_tu_" />
+        android:text="correo"
+        android:textAppearance="" />
 
 
     <!-- styles.xml -->
