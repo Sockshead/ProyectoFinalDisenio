@@ -10,4 +10,8 @@
     <string name="botonpago1">Button</string>
     <string name="pagar_viaje">Pagar Viaje</string>
     <string name="pagar_multa">Pagar Multa</string>
+    <string name="pago_en_efectivo">Pago en efectivo</string>
+    <string name="pago_electronico">Pago Electronico</string>
+    <string name="aqui_va_lo_que_se_debe_pagar">Aqui va lo que se debe pagar</string>
+    <string name="confirmar">Confirmar</string>
 </resources>
