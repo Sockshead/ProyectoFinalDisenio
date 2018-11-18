@@ -1,4 +1,4 @@
-package co.edu.juanposarunisabana.iwillson;
+package co.edu.unisabana.wheels.iwheelson;
 
 import org.junit.Test;
 
