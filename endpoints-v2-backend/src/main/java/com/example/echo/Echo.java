@@ -48,8 +48,10 @@ public class Echo {
 	Facade facade = Facade.rConstructora();
 	Proxy proxy = Proxy.rConstructora();
 	
+	public Echo() {
+		proxy.crearPasajero("mate.balles", "12345", "Julian", "Ballesteros", 21);
+	}
 	
-
 	/**
 	 * Echoes the received message back. If n is a non-negative integer, the message
 	 * is copied that many times in the returned message.
