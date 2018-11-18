@@ -11,7 +11,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".IniciarSesion" />
         <activity android:name=".MenuPrincipal" />
-        <activity android:name=".MetodoPago"></activity>
+        <activity android:name=".MetodoPago" />
+        <activity android:name=".PagoEfectivo"></activity>
     </application>
 
 </manifest>
