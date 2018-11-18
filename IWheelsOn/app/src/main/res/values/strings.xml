@@ -4,4 +4,10 @@
     <string name="escribir_correo">Escribir correo</string>
     <string name="inserteemail">Inserte Email</string>
     <string name="ingresarcontrasena">Ingresar Contraseña</string>
+    <string name="contrasena">contrasena</string>
+    <string name="usuario">usuario</string>
+    <string name="MENU">TextView</string>
+    <string name="botonpago1">Button</string>
+    <string name="pagar_viaje">Pagar Viaje</string>
+    <string name="pagar_multa">Pagar Multa</string>
 </resources>
