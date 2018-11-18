@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">IWheelsOn</string>
+    <string name="iniciarsesion">INICIAR SESION</string>
+    <string name="escribir_correo">Escribir correo</string>
+    <string name="inserteemail">Inserte Email</string>
+    <string name="ingresarcontrasena">Ingresar Contraseña</string>
 </resources>
