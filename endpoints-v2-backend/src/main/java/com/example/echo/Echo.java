@@ -74,15 +74,13 @@ public class Echo {
 //Test
 
 	@ApiMethod(name = "Auth")
-	public Session auth(@Named("User") String user, @Named("Password") String pass) {
-		return proxy.auth(user, pass);
+	public Session auth(Login log) {
+		return proxy.auth(log.getUser(), log.getPassword());
 	}
 
 	@ApiMethod(name = "Test")
-	public Session test(@Named("Sesion") long sesion) {
-		Session session = new Session();
-		session.setSession(sesion);
-		return facade.test(session);
+	public Session test(Session sesion) {
+		return facade.test(sesion);
 	}
 
 	/**
