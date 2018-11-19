@@ -16,6 +16,7 @@
 
 package com.example.echo;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import com.google.api.server.spi.auth.EspAuthenticator;
@@ -49,7 +50,7 @@ public class Echo {
 	Proxy proxy = Proxy.rConstructora();
 	
 	public Echo() {
-		proxy.crearPasajero("mate.balles", "12345", "Julian", "Ballesteros", 21);
+		proxy.crearPasajero("mate.balles", "12345", "Julian", "Ballesteros", 21,"987654");
 	}
 	
 	/**
@@ -78,10 +79,15 @@ public class Echo {
 		return proxy.auth(log.getUser(), log.getPassword());
 	}
 
-	@ApiMethod(name = "Test")
-	public Session test(Session sesion) {
-		return facade.test(sesion);
+	@ApiMethod(name = "PagoEfectivo")
+	public IPago test(@Named ("session") long sesion,Pago pago) {
+		return facade.pagoEfectivo(sesion,pago);
 	}
+	@ApiMethod(name = "ListPagos")
+	public ArrayList<IPago> listPagos(@Named ("session") long sesion,@Named ("ID") String id ) {
+		return facade.listarPagos(id,sesion);
+	}
+
 
 	/**
 	 * Echoes the received message back. If n is a non-negative integer, the message

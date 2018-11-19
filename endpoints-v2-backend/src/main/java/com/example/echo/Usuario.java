@@ -8,8 +8,9 @@ public abstract class Usuario implements IUsuario {
 	    private String nombre;
 	    private String apellido;
 	    private int edad;
+	    private String id;
 
-	    abstract public void adicionar(String correo, String password, String nombre, String apellido, int edad);
+	    abstract public void adicionar(String correo, String password, String nombre, String apellido, int edad,String id);
 
 	    abstract public void modificar(String password, String nombre, String apellido, int edad);
 
@@ -51,6 +52,14 @@ public abstract class Usuario implements IUsuario {
 
 		public void setEdad(int edad) {
 			this.edad = edad;
+		}
+
+		public String getId() {
+			return id;
+		}
+
+		public void setId(String id) {
+			this.id = id;
 		}
 
 }
