@@ -47,7 +47,7 @@
         tools:targetApi="o" />
 
     <Button
-        android:id="@+id/INICIARSESION"
+        android:id="@+id/inicios"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
