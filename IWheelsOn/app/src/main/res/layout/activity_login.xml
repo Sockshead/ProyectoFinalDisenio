@@ -23,8 +23,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.157" />
+
     <EditText
-        android:id="@+id/Escribir_Contrasena"
+        android:id="@+id/ipass"
         android:layout_width="222dp"
         android:layout_height="60dp"
         android:layout_alignParentStart="true"
@@ -35,19 +36,19 @@
         android:layout_marginBottom="8dp"
         android:autofillHints=""
         android:background="@drawable/escribircontrasenia"
-        android:inputType="textPassword"
         android:hint="@string/contrasena"
+        android:inputType="textPassword"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Escribir_Usuario"
+        app:layout_constraintTop_toBottomOf="@+id/iuser"
         app:layout_constraintVertical_bias="0.115"
         tools:targetApi="o" />
 
     <Button
-        android:id="@+id/INICIARSESION"
+        android:id="@+id/inicios"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -64,7 +65,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <EditText
-        android:id="@+id/Escribir_Usuario"
+        android:id="@+id/iuser"
         android:layout_width="222dp"
         android:layout_height="60dp"
         android:layout_marginStart="8dp"
