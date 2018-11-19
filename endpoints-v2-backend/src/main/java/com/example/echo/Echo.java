@@ -34,7 +34,7 @@ import com.google.api.server.spi.response.UnauthorizedException;
  * The Echo API which Endpoints will be exposing.
  */
 // [START echo_api_annotation]
-@Api(name = "proxy", version = "v3", namespace = @ApiNamespace(ownerDomain = "echo.example.com", ownerName = "echo.example.com", packagePath = ""),
+@Api(name = "proxy", version = "v3", namespace = @ApiNamespace(ownerDomain = "wheels.endpoints.com", ownerName = "wheels.endpoints.com", packagePath = ""),
 		// [START_EXCLUDE]
 		issuers = {
 				@ApiIssuer(name = "firebase", issuer = "https://securetoken.google.com/YOUR-PROJECT-ID", jwksUri = "https://www.googleapis.com/service_accounts/v1/metadata/x509/securetoken@system"
@@ -74,15 +74,13 @@ public class Echo {
 //Test
 
 	@ApiMethod(name = "Auth")
-	public Session auth(@Named("User") String user, @Named("Password") String pass) {
-		return proxy.auth(user, pass);
+	public Session auth(Login log) {
+		return proxy.auth(log.getUser(), log.getPassword());
 	}
 
 	@ApiMethod(name = "Test")
-	public Session test(@Named("Sesion") long sesion) {
-		Session session = new Session();
-		session.setSession(sesion);
-		return facade.test(session);
+	public Session test(Session sesion) {
+		return facade.test(sesion);
 	}
 
 	/**
