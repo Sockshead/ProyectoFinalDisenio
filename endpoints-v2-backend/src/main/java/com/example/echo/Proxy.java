@@ -24,6 +24,7 @@ public class Proxy implements IProxy {
 			if (us.getCorreo().equals(user)&&us.getPass().equals(pass)) {
 				Session session = new Session();
 				session.setSession(ran.nextLong());
+				session.setId(us.getId());
 				facade.guardarSesion(session);
 				return session;
 			}
@@ -40,13 +41,14 @@ public class Proxy implements IProxy {
 	}
 
 	@Override
-	public void crearPasajero(String correo, String password, String nombre, String apellido, int edad) {
+	public void crearPasajero(String correo, String password, String nombre, String apellido, int edad, String id) {
 		IUsuario user=new Pasajero();
 		user.setCorreo(correo);
 		user.setPass(password);
 		user.setNombre(nombre);
 		user.setApellido(apellido);
 		user.setEdad(edad);
+		user.setId(id);
 		usuarios.add(user);
 	}
 

@@ -2,7 +2,7 @@ package com.example.echo;
 
 public interface IUsuario {
 	
-	  public void adicionar(String correo, String password, String nombre, String apellido, int edad);
+	  public void adicionar(String correo, String password, String nombre, String apellido, int edad,String id);
       public void modificar(String password, String nombre, String apellido, int edad);
       public String getNombre();
       public String getCorreo();
@@ -14,5 +14,7 @@ public interface IUsuario {
       public void setPass(String pass);
       public void setApellido(String apellido);
       public void setEdad(int edad);
+      public String getId();
+      public void setId(String id);
 
 }
