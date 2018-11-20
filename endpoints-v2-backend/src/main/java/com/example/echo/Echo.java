@@ -16,6 +16,7 @@
 
 package com.example.echo;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import com.google.api.server.spi.auth.EspAuthenticator;
@@ -47,11 +48,12 @@ public class Echo {
 
 	Facade facade = Facade.rConstructora();
 	Proxy proxy = Proxy.rConstructora();
-	
+
 	public Echo() {
-		proxy.crearPasajero("mate.balles", "12345", "Julian", "Ballesteros", 21);
+		proxy.crearPasajero("mate.balles", "12345", "Julian", "Ballesteros", 21, "987654");
+		proxy.crearConductor("juancapoar", "54321", "Juan", "Posada", 21, "169701");
 	}
-	
+
 	/**
 	 * Echoes the received message back. If n is a non-negative integer, the message
 	 * is copied that many times in the returned message.
@@ -78,9 +80,24 @@ public class Echo {
 		return proxy.auth(log.getUser(), log.getPassword());
 	}
 
-	@ApiMethod(name = "Test")
-	public Session test(Session sesion) {
-		return facade.test(sesion);
+	@ApiMethod(name = "PagoEfectivo")
+	public IPago pagoEfectivo(@Named("session") long sesion, @Named("date") String date, Pago pago) {
+		return facade.pagoEfectivo(sesion, pago, date);
+	}
+
+	@ApiMethod(name = "PagoDebito")
+	public IPago pagoDebito(@Named("session") long sesion, @Named("datos") String datos, Pago pago) {
+		return facade.pagoDebito(sesion, pago, datos);
+	}
+
+	@ApiMethod(name = "PagoCredito")
+	public IPago pagoCredito(@Named("session") long sesion, @Named("datos") String datos, Pago pago) {
+		return facade.pagoCredito(sesion, pago, datos);
+	}
+
+	@ApiMethod(name = "ListPagos")
+	public ArrayList<IPago> listPagos(@Named("session") long sesion, @Named("ID") String id) {
+		return facade.listarPagos(id, sesion);
 	}
 
 	/**

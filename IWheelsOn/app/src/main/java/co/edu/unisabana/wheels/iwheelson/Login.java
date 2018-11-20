@@ -25,6 +25,7 @@ public class Login extends AppCompatActivity {
     EditText iusuario,ipass;
     Button inicio;
     long session=0;
+    String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +60,8 @@ public class Login extends AppCompatActivity {
             if(session!=0){
                 Intent menu = new Intent(Login.this,MenuPrincipal.class);
                 menu.putExtra("Session",session);
+                menu.putExtra("IdUsuario",id);
+                System.out.println("ID ALETOSO1 "+id);
                 Login.this.startActivity(menu);
             }else {
                 Toast.makeText(Login.this,"Usuario no encontrado",Toast.LENGTH_LONG).show();
@@ -72,7 +75,7 @@ public class Login extends AppCompatActivity {
         String user = iusuario.getText().toString().trim();
         String pass = ipass.getText().toString();
         try {
-            url = new URL("https://disenioarqproyecto.appspot.com/_ah/api/proxy/v3/auth");
+            url = new URL("https://pagoswheels.appspot.com/_ah/api/proxy/v3/auth");
             String response = "";
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setReadTimeout(15000);
@@ -106,6 +109,7 @@ public class Login extends AppCompatActivity {
                 }
                 JSONObject respuesta = new JSONObject(response);
                 sesion = Long.parseLong(respuesta.getString("session"));
+                id = respuesta.getString("id");
             } else
 
             {
