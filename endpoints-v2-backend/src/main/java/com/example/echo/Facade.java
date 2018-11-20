@@ -23,12 +23,40 @@ public class Facade {
 		Sesiones.add(session.getSession());
 	}
 	
-	public IPago pagoEfectivo (long session,Pago pago) {
+	public IPago pagoEfectivo (long session,Pago pago,String date) {
 		Pago pag = (Pago) pago; 
+		IPago com= new Efectivo(pago);
+		com.setValores(date);
 		for (long ses:Sesiones) {
 			if(session==ses) {
-				pagos.add(pago);
-				return pago;
+				pagos.add(com);
+				return com;
+			}
+		}
+		return null;
+	}
+	
+	public IPago pagoDebito (long session,Pago pago,String datos) {
+		Pago pag = (Pago) pago; 
+		IPago com= new Debito(pago);
+		com.setValores(datos);
+		for (long ses:Sesiones) {
+			if(session==ses) {
+				pagos.add(com);
+				return com;
+			}
+		}
+		return null;
+	}
+	
+	public IPago pagoCredito (long session,Pago pago,String datos) {
+		Pago pag = (Pago) pago; 
+		IPago com= new Credito(pago);
+		com.setValores(datos);
+		for (long ses:Sesiones) {
+			if(session==ses) {
+				pagos.add(com);
+				return com;
 			}
 		}
 		return null;
