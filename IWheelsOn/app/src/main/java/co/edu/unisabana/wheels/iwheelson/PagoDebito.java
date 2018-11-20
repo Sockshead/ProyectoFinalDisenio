@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,24 +28,27 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class PagoEfectivo extends AppCompatActivity {
+public class PagoDebito extends AppCompatActivity {
 
     long session;
     String concepto;
     TextView tvalor;
     Button confirmarP;
-    String valor,referencia,usuarioP,pagado,fecha;
+    String valor, referencia, usuarioP, pagado, fecha;
+    EditText numCuenta;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pago_efectivo);
-        session=getIntent().getExtras().getLong("Session");
-        concepto=getIntent().getExtras().getString("Concepto");
-        usuarioP=getIntent().getExtras().getString("id");
+        setContentView(R.layout.activity_pago_debito);
+        session = getIntent().getExtras().getLong("Session");
+        concepto = getIntent().getExtras().getString("Concepto");
+        usuarioP = getIntent().getExtras().getString("id");
         tvalor = findViewById(R.id.verpago);
         tvalor.setText("3000");
+        numCuenta = findViewById(R.id.txtCuentaDeb);
         confirmarP = findViewById(R.id.confirmarpago);
-        System.out.println("Sesion: "+session+" Concepto "+ concepto);
+        System.out.println("Sesion: " + session + " Concepto " + concepto);
 
         fecha = new SimpleDateFormat("dd-MM-yy_HH:mm:ss").format(Calendar.getInstance().getTime());
 
@@ -52,12 +56,10 @@ public class PagoEfectivo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 new EndpointsAsyncTask().execute();
-
+                System.out.println(numCuenta);
             }
         });
     }
-
-
 
 
     private class EndpointsAsyncTask extends AsyncTask<String, Void, Void> {
@@ -71,13 +73,13 @@ public class PagoEfectivo extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            System.out.println("Sesion "+session);
+            System.out.println("Sesion " + session);
 
         }
     }
 
     private boolean pagar() {
-        boolean pag=false;
+        boolean pag = false;
         Random ran = new Random();
         valor = tvalor.getText().toString();
         referencia = String.valueOf(ran.nextInt());
@@ -87,7 +89,7 @@ public class PagoEfectivo extends AppCompatActivity {
 
 
         try {
-            url = new URL("https://pagoswheels.appspot.com/_ah/api/proxy/v3/test/"+session+"/"+fecha);
+            url = new URL("https://pagoswheels.appspot.com/_ah/api/proxy/v3/test/" + session + "/" + fecha + "/" + numCuenta);
             System.out.println(url);
             String response = "";
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -99,10 +101,9 @@ public class PagoEfectivo extends AppCompatActivity {
             con.setDoOutput(true);
 
             JSONObject postDataParams = new JSONObject();
-            String value=valor+","+referencia+","+usuarioP+","+pagado+","+concepto;
+            String value = valor + "," + referencia + "," + usuarioP + "," + pagado + "," + concepto;
             System.out.println(value);
             postDataParams.put("valores", value);
-
 
 
             OutputStreamWriter writer = new OutputStreamWriter(con.getOutputStream());
@@ -126,7 +127,7 @@ public class PagoEfectivo extends AppCompatActivity {
 
             {
                 response = "";
-                sesion=0;
+                sesion = 0;
             }
             System.out.println(response);
 

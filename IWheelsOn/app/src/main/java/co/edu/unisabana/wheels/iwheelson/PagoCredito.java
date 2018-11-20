@@ -27,17 +27,17 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class PagoEfectivo extends AppCompatActivity {
+public class PagoCredito extends AppCompatActivity {
 
     long session;
     String concepto;
     TextView tvalor;
     Button confirmarP;
-    String valor,referencia,usuarioP,pagado,fecha;
+    String valor,referencia,usuarioP,pagado,fecha,numTarjeta,cuotas;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pago_efectivo);
+        setContentView(R.layout.activity_pago_credito);
         session=getIntent().getExtras().getLong("Session");
         concepto=getIntent().getExtras().getString("Concepto");
         usuarioP=getIntent().getExtras().getString("id");

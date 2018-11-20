@@ -4,6 +4,7 @@ public class Credito extends MediosDePago {
 
 	String fecha;
 	String numTarjeta;
+	String segucode;
 	String cuotas;
 
 	public Credito(IPago pMediosPago) {
@@ -15,7 +16,8 @@ public class Credito extends MediosDePago {
 		String[] para = pPago.split(",");
 		this.fecha = para[0];
 		this.numTarjeta = para[1];
-		this.cuotas = para[2];
+		this.segucode = para[2];
+		this.cuotas = para[3];
 	}
 
 	@Override
@@ -100,6 +102,14 @@ public class Credito extends MediosDePago {
 
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
+	}
+
+	public String getSegucode() {
+		return segucode;
+	}
+
+	public void setSegucode(String segucode) {
+		this.segucode = segucode;
 	}
 	
 
