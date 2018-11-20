@@ -38,7 +38,7 @@ public class MetodoPago extends AppCompatActivity {
         pagol.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent menu = new Intent(MetodoPago.this,PagoDebito.class);
+                Intent menu = new Intent(MetodoPago.this,PagoCredito.class);
                 menu.putExtra("Session",session);
                 menu.putExtra("Concepto",concepto);
                 menu.putExtra("id",id);
