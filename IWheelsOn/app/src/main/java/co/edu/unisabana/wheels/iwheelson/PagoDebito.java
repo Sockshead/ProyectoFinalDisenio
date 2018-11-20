@@ -35,7 +35,8 @@ public class PagoDebito extends AppCompatActivity {
     TextView tvalor;
     Button confirmarP;
     String valor, referencia, usuarioP, pagado, fecha;
-    EditText numCuenta;
+    EditText mEdit;
+    String numCuenta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +47,7 @@ public class PagoDebito extends AppCompatActivity {
         usuarioP = getIntent().getExtras().getString("id");
         tvalor = findViewById(R.id.verpago);
         tvalor.setText("3000");
-        numCuenta = findViewById(R.id.txtCuentaDeb);
+        mEdit = findViewById(R.id.txtCuentaDeb);
         confirmarP = findViewById(R.id.confirmarpago);
         System.out.println("Sesion: " + session + " Concepto " + concepto);
 
@@ -56,7 +57,8 @@ public class PagoDebito extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 new EndpointsAsyncTask().execute();
-                System.out.println(numCuenta);
+                numCuenta = mEdit.getText().toString();
+                System.out.println(numCuenta+" 2 print");
             }
         });
     }
@@ -89,7 +91,7 @@ public class PagoDebito extends AppCompatActivity {
 
 
         try {
-            url = new URL("https://pagoswheels.appspot.com/_ah/api/proxy/v3/test/" + session + "/" + fecha + "/" + numCuenta);
+            url = new URL("https://pagoswheels.appspot.com/_ah/api/proxy/v3/pagoDebito/" + session + "/" + fecha +"%2C"+ numCuenta);
             System.out.println(url);
             String response = "";
             HttpURLConnection con = (HttpURLConnection) url.openConnection();

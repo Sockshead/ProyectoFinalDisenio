@@ -5,7 +5,12 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Adapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,37 +32,61 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class PagoCredito extends AppCompatActivity {
+public class PagoCredito extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     long session;
     String concepto;
     TextView tvalor;
     Button confirmarP;
-    String valor,referencia,usuarioP,pagado,fecha,numTarjeta,cuotas;
+    String valor,referencia,usuarioP,pagado,fecha;
+    EditText txTarjeta;
+    EditText txtSegu;
+    String numTarjeta;
+    String segucode;
+    String cuotas;
+    Spinner dropdown = findViewById(R.id.spinnerCuotas);
+    String[] items = new String[]{"1","2","3","4","5","6","7","8","9","10","11","12","18","24","36"};
+    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,items.length,android.R.layout.simple_spinner_item);
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pago_credito);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        dropdown.setAdapter(adapter);
         session=getIntent().getExtras().getLong("Session");
         concepto=getIntent().getExtras().getString("Concepto");
         usuarioP=getIntent().getExtras().getString("id");
         tvalor = findViewById(R.id.verpago);
         tvalor.setText("3000");
+        txTarjeta = findViewById(R.id.mTarjeta);
+        txtSegu = findViewById(R.id.mSegu);
         confirmarP = findViewById(R.id.confirmarpago);
         System.out.println("Sesion: "+session+" Concepto "+ concepto);
 
         fecha = new SimpleDateFormat("dd-MM-yy_HH:mm:ss").format(Calendar.getInstance().getTime());
 
+
         confirmarP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new EndpointsAsyncTask().execute();
-
+                numTarjeta = txTarjeta.getText().toString();
+                segucode = txtSegu.getText().toString();
             }
         });
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        cuotas = dropdown.toString();
+    }
 
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 
 
     private class EndpointsAsyncTask extends AsyncTask<String, Void, Void> {
