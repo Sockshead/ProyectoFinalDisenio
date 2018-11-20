@@ -75,7 +75,7 @@ public class Login extends AppCompatActivity {
         String user = iusuario.getText().toString().trim();
         String pass = ipass.getText().toString();
         try {
-            url = new URL("https://daproyectofinal.appspot.com/_ah/api/proxy/v3/auth");
+            url = new URL("https://pagoswheels.appspot.com/_ah/api/proxy/v3/auth");
             String response = "";
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setReadTimeout(15000);

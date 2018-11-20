@@ -7,7 +7,6 @@ public class Pago implements IPago{
 	private String UsuarioPaga;
 	private String UsuarioPagado;
 	private String concepto;
-
 	@Override
 	public void setValores(String infoPago) {
 		 String[] para = infoPago.split(",");

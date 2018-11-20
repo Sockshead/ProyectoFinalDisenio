@@ -22,13 +22,18 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.util.Random;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class PagoEfectivo extends AppCompatActivity {
 
     long session;
     String concepto;
     TextView tvalor;
     Button confirmarP;
-    String valor,referencia,usuarioP,pagado;
+    String valor,referencia,usuarioP,pagado, fecha;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +45,8 @@ public class PagoEfectivo extends AppCompatActivity {
         tvalor.setText("3000");
         confirmarP = findViewById(R.id.confirmarpago);
         System.out.println("Sesion: "+session+" Concepto "+ concepto);
+
+        fecha = new SimpleDateFormat("dd-MM-yy_HH:mm:ss").format(Calendar.getInstance().getTime());
 
         confirmarP.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +87,7 @@ public class PagoEfectivo extends AppCompatActivity {
 
 
         try {
-            url = new URL("https://daproyectofinal.appspot.com/_ah/api/proxy/v3/test/"+session);
+            url = new URL("https://pagoswheels.appspot.com/_ah/api/proxy/v3/test/"+session+"/"+fecha);
             System.out.println(url);
             String response = "";
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
