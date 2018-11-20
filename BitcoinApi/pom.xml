@@ -21,10 +21,10 @@
       <repository>
         <id>api-v1-client-java-mvn-repo</id>
         <url>https://raw.githubusercontent.com/blockchain/api-v1-client-java/mvn-repo/</url>
-        <snapshots>
+        <!-- <snapshots>
             <enabled>true</enabled>
             <updatePolicy>always</updatePolicy>
-        </snapshots>
+        </snapshots> -->
     </repository>
   </distributionManagement>
 
