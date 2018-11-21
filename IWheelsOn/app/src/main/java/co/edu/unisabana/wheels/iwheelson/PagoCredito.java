@@ -36,7 +36,6 @@ public class PagoCredito extends AppCompatActivity implements AdapterView.OnItem
 
     long session;
     String concepto;
-    TextView tvalor;
     Button confirmarP;
     String valor,referencia,usuarioP,pagado,fecha;
     EditText txTarjeta;
@@ -44,25 +43,26 @@ public class PagoCredito extends AppCompatActivity implements AdapterView.OnItem
     String numTarjeta;
     String segucode;
     String cuotas;
-    Spinner dropdown = findViewById(R.id.spinnerCuotas);
+    Spinner dropdown;
     String[] items = new String[]{"1","2","3","4","5","6","7","8","9","10","11","12","18","24","36"};
-    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,items.length,android.R.layout.simple_spinner_item);
+    ArrayAdapter<String> adapter;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pago_credito);
+        dropdown = findViewById(R.id.spinnerCuotas);
+        adapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,items);
+
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dropdown.setAdapter(adapter);
         session=getIntent().getExtras().getLong("Session");
         concepto=getIntent().getExtras().getString("Concepto");
         usuarioP=getIntent().getExtras().getString("id");
-        tvalor = findViewById(R.id.verpago);
-        tvalor.setText("3000");
         txTarjeta = findViewById(R.id.mTarjeta);
         txtSegu = findViewById(R.id.mSegu);
-        confirmarP = findViewById(R.id.confirmarpago);
+        confirmarP = findViewById(R.id.confirmarpago2);
         System.out.println("Sesion: "+session+" Concepto "+ concepto);
 
         fecha = new SimpleDateFormat("dd-MM-yy_HH:mm:ss").format(Calendar.getInstance().getTime());
@@ -108,7 +108,6 @@ public class PagoCredito extends AppCompatActivity implements AdapterView.OnItem
     private boolean pagar() {
         boolean pag=false;
         Random ran = new Random();
-        valor = tvalor.getText().toString();
         referencia = String.valueOf(ran.nextInt());
         pagado = "54321";
         URL url = null;
