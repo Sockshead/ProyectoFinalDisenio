@@ -58,7 +58,7 @@ public class Login extends AppCompatActivity {
         protected void onPostExecute(Void aVoid) {
             System.out.println("Sesion "+session);
             if(session!=0){
-                Intent menu = new Intent(Login.this,MenuPrincipal.class);
+                Intent menu = new Intent(Login.this,MenuPrincipalNuevo.class);
                 menu.putExtra("Session",session);
                 menu.putExtra("IdUsuario",id);
                 System.out.println("ID ALETOSO1 "+id);
@@ -75,7 +75,7 @@ public class Login extends AppCompatActivity {
         String user = iusuario.getText().toString().trim();
         String pass = ipass.getText().toString();
         try {
-            url = new URL("https://pagoswheels.appspot.com/_ah/api/proxy/v3/auth");
+            url = new URL("https://daproyectofinal.appspot.com/_ah/api/proxy/v3/auth");
             String response = "";
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setReadTimeout(15000);

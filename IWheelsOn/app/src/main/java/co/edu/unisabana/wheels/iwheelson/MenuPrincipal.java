@@ -18,7 +18,7 @@ public class MenuPrincipal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
         session=getIntent().getExtras().getLong("Session");
-        id=getIntent().getExtras().getString("IdUsuario");
+        id=getIntent().getExtras().getString("id");
         pagov = findViewById(R.id.pagoviajes);
         pagom = findViewById(R.id.pagomultas);
 

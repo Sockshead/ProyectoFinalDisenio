@@ -40,7 +40,7 @@
         app:layout_constraintVertical_bias="0.666" />
 
     <Button
-        android:id="@+id/pagos"
+        android:id="@+id/pagosr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="9dp"
@@ -68,6 +68,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pagos"
+        app:layout_constraintTop_toBottomOf="@+id/pagosr"
         app:layout_constraintVertical_bias="1.0" />
 </android.support.constraint.ConstraintLayout>

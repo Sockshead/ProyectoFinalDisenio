@@ -91,7 +91,7 @@ public class PagoEfectivo extends AppCompatActivity {
 
 
         try {
-            url = new URL("https://pagoswheels.appspot.com/_ah/api/proxy/v3/pagoEfectivo/"+session+"/"+fecha);
+            url = new URL("https://daproyectofinal.appspot.com/_ah/api/proxy/v3/pagoEfectivo/"+session+"/"+fecha);
             System.out.println(url);
             String response = "";
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
