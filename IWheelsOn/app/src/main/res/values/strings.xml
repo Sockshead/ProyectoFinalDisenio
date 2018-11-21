@@ -20,4 +20,6 @@
     <string name="codigo_de_seguridad">Codigo de seguridad</string>
     <string name="pago_con_tarjeta_debito">Pago con tarjeta debito</string>
     <string name="pago_con_tarjeta_de_credito">Pago con tarjeta de credito</string>
+    <string name="ver_pagos">Ver Pagos</string>
+    <string name="pagos">pagos</string>
 </resources>
