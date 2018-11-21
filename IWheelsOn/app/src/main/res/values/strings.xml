@@ -22,4 +22,6 @@
     <string name="pago_con_tarjeta_de_credito">Pago con tarjeta de credito</string>
     <string name="ver_pagos">Ver Pagos</string>
     <string name="pagos">pagos</string>
+    <string name="realizar_pagos">Realizar Pagos</string>
+    <string name="ver_pagos_recibidos">ver pagos recibidos</string>
 </resources>
