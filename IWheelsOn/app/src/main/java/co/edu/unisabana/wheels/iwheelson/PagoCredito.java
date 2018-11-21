@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.util.Log;
 import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,7 +33,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class PagoCredito extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class PagoCredito extends AppCompatActivity{
 
     long session;
     String concepto;
@@ -42,6 +43,7 @@ public class PagoCredito extends AppCompatActivity implements AdapterView.OnItem
     EditText txtSegu;
     String numTarjeta;
     String segucode;
+    int numCuotas;
     String cuotas;
     Spinner dropdown;
     String[] items = new String[]{"1","2","3","4","5","6","7","8","9","10","11","12","18","24","36"};
@@ -67,6 +69,23 @@ public class PagoCredito extends AppCompatActivity implements AdapterView.OnItem
 
         fecha = new SimpleDateFormat("dd-MM-yy_HH:mm:ss").format(Calendar.getInstance().getTime());
 
+        dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                for(int i=0;i<items.length;i++){
+                    if(items[i]==parent.getItemAtPosition(position)){
+                        numCuotas = Integer.parseInt(items[i]);
+                    }
+                }
+                System.out.println(numCuotas);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // TODO Auto-generated method stub
+            }
+        });
 
         confirmarP.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,20 +93,10 @@ public class PagoCredito extends AppCompatActivity implements AdapterView.OnItem
                 new EndpointsAsyncTask().execute();
                 numTarjeta = txTarjeta.getText().toString();
                 segucode = txtSegu.getText().toString();
+                cuotas = numCuotas+"";
             }
         });
     }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        cuotas = dropdown.toString();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
-
 
     private class EndpointsAsyncTask extends AsyncTask<String, Void, Void> {
 
@@ -115,7 +124,7 @@ public class PagoCredito extends AppCompatActivity implements AdapterView.OnItem
 
 
         try {
-            url = new URL("https://pagoswheels.appspot.com/_ah/api/proxy/v3/test/"+session+"/"+fecha);
+            url = new URL("https://pagoswheels.appspot.com/_ah/api/proxy/v3/pagoCredito/"+session+"/"+fecha+"%2C"+numTarjeta+"%2C"+segucode+"%2C"+cuotas);
             System.out.println(url);
             String response = "";
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
