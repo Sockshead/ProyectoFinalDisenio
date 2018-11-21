@@ -77,13 +77,4 @@ public class Facade {
 		return null;
 	}
 
-
-	public ArrayList<IPago> listarTPagos(long sesion) {
-		for (long ses:Sesiones) {
-			if(sesion==ses) {
-				return pagos;
-			}
-		}
-		return null;
-	}
 }
