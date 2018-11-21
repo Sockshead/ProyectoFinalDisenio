@@ -38,6 +38,7 @@ public class PagoEfectivo extends AppCompatActivity {
     TextView tvalor;
     Button confirmarP;
     String valor,referencia,usuarioP,pagado,fecha;
+    boolean ispagado;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +57,20 @@ public class PagoEfectivo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 new EndpointsAsyncTask().execute();
+                if(ispagado){
+                    Toast.makeText(PagoEfectivo.this,"Pago Realizado con exito!!",Toast.LENGTH_LONG).show();
+                    Intent menu = new Intent(PagoEfectivo.this,MenuPrincipalNuevo.class);
+                    menu.putExtra("Session",session);
+                    menu.putExtra("IdUsuario",usuarioP);
+                    PagoEfectivo.this.startActivity(menu);
+                }
+                else{
+                    Toast.makeText(PagoEfectivo.this,"No se pudo realizar el pago",Toast.LENGTH_LONG).show();
+                    Intent menu = new Intent(PagoEfectivo.this,MenuPrincipalNuevo.class);
+                    menu.putExtra("Session",session);
+                    menu.putExtra("IdUsuario",usuarioP);
+                    PagoEfectivo.this.startActivity(menu);
+                }
 
             }
         });
@@ -69,7 +84,7 @@ public class PagoEfectivo extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(String... strings) {
-            pagar();
+            ispagado = pagar();
             return null;
         }
 
@@ -91,7 +106,7 @@ public class PagoEfectivo extends AppCompatActivity {
 
 
         try {
-            url = new URL("https://pagoswheels.appspot.com/_ah/api/proxy/v3/pagoEfectivo/"+session+"/"+fecha);
+            url = new URL("https://daproyectofinal.appspot.com/_ah/api/proxy/v3/pagoEfectivo/"+session+"/"+fecha);
             System.out.println(url);
             String response = "";
             HttpURLConnection con = (HttpURLConnection) url.openConnection();

@@ -26,7 +26,7 @@
         <activity android:name=".ListaPagosRealizados"></activity>
         <activity android:name=".PagoElectronico" />
         <activity android:name=".MenuPrincipalNuevo" />
-        <activity android:name=".PagosConductor"></activity>
+        <activity android:name=".PagosMenu"></activity>
     </application>
 
 </manifest>

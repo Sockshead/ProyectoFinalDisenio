@@ -40,12 +40,6 @@ public class Proxy implements IProxy {
 	}
 
 	@Override
-	public Session test(long sesion) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public void crearPasajero(String correo, String password, String nombre, String apellido, int edad, String id) {
 		IUsuario user=new Pasajero();
 		user.setCorreo(correo);
