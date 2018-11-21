@@ -24,6 +24,9 @@
         <activity android:name=".PagoDebito" />
         <activity android:name=".PagoCredito" />
         <activity android:name=".ListaPagosRealizados"></activity>
+        <activity android:name=".PagoElectronico" />
+        <activity android:name=".MenuPrincipalNuevo" />
+        <activity android:name=".PagosConductor"></activity>
     </application>
 
 </manifest>
