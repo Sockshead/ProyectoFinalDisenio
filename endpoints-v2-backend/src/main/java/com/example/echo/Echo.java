@@ -46,8 +46,8 @@ import com.google.api.server.spi.response.UnauthorizedException;
 
 public class Echo {
 
-	Facade facade = Facade.rConstructora();
-	Proxy proxy = Proxy.rConstructora();
+	private Facade facade = Facade.rConstructora();
+	private IProxy proxy = Proxy.rConstructora();
 
 	public Echo() {
 		proxy.crearPasajero("mate.balles", "12345", "Julian", "Ballesteros", 21, "987654");
@@ -96,8 +96,8 @@ public class Echo {
 	}
 
 	@ApiMethod(name = "ListPagos")
-	public ArrayList<IPago> listPagos(@Named("session") long sesion, @Named("ID") String id) {
-		return facade.listarPagos(id, sesion);
+	public ArrayList<IPago> listPagos(@Named("session") long sesion) {
+		return facade.listarPagos(sesion);
 	}
 
 	/**

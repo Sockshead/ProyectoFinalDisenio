@@ -45,6 +45,7 @@ public class PagoCredito extends AppCompatActivity{
     String segucode;
     int numCuotas;
     String cuotas;
+    boolean ispagado;
     Spinner dropdown;
     String[] items = new String[]{"1","2","3","4","5","6","7","8","9","10","11","12","18","24","36"};
     ArrayAdapter<String> adapter;
@@ -94,6 +95,20 @@ public class PagoCredito extends AppCompatActivity{
                 numTarjeta = txTarjeta.getText().toString();
                 segucode = txtSegu.getText().toString();
                 cuotas = numCuotas+"";
+                if(ispagado){
+                    Toast.makeText(PagoCredito.this,"Pago Realizado con exito!!",Toast.LENGTH_LONG).show();
+                    Intent menu = new Intent(PagoCredito.this,MenuPrincipalNuevo.class);
+                    menu.putExtra("Session",session);
+                    menu.putExtra("IdUsuario",usuarioP);
+                    PagoCredito.this.startActivity(menu);
+                }
+                else{
+                    Toast.makeText(PagoCredito.this,"No se pudo realizar el pago",Toast.LENGTH_LONG).show();
+                    Intent menu = new Intent(PagoCredito.this,MenuPrincipalNuevo.class);
+                    menu.putExtra("Session",session);
+                    menu.putExtra("IdUsuario",usuarioP);
+                    PagoCredito.this.startActivity(menu);
+                }
             }
         });
     }
@@ -103,7 +118,7 @@ public class PagoCredito extends AppCompatActivity{
 
         @Override
         protected Void doInBackground(String... strings) {
-            pagar();
+            ispagado= pagar();
             return null;
         }
 
@@ -124,7 +139,7 @@ public class PagoCredito extends AppCompatActivity{
 
 
         try {
-            url = new URL("https://pagoswheels.appspot.com/_ah/api/proxy/v3/pagoCredito/"+session+"/"+fecha+"%2C"+numTarjeta+"%2C"+segucode+"%2C"+cuotas);
+            url = new URL("https://daproyectofinal.appspot.com/_ah/api/proxy/v3/pagoCredito/"+session+"/"+fecha+"%2C"+numTarjeta+"%2C"+segucode+"%2C"+cuotas);
             System.out.println(url);
             String response = "";
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
