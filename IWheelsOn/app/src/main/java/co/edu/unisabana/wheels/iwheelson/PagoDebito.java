@@ -37,6 +37,7 @@ public class PagoDebito extends AppCompatActivity {
     String valor, referencia, usuarioP, pagado, fecha;
     EditText mEdit;
     String numCuenta;
+    Boolean ispagado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +59,22 @@ public class PagoDebito extends AppCompatActivity {
             public void onClick(View v) {
                 new EndpointsAsyncTask().execute();
                 numCuenta = mEdit.getText().toString();
+
                 System.out.println(numCuenta+" 2 print");
+                if(ispagado){
+                    Toast.makeText(PagoDebito.this,"Pago Realizado con exito!!",Toast.LENGTH_LONG).show();
+                    Intent menu = new Intent(PagoDebito.this,MenuPrincipalNuevo.class);
+                    menu.putExtra("Session",session);
+                    menu.putExtra("IdUsuario",usuarioP);
+                    PagoDebito.this.startActivity(menu);
+                }
+                else{
+                    Toast.makeText(PagoDebito.this,"No se pudo realizar el pago",Toast.LENGTH_LONG).show();
+                    Intent menu = new Intent(PagoDebito.this,MenuPrincipalNuevo.class);
+                    menu.putExtra("Session",session);
+                    menu.putExtra("IdUsuario",usuarioP);
+                    PagoDebito.this.startActivity(menu);
+                }
             }
         });
     }
@@ -69,7 +85,7 @@ public class PagoDebito extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(String... strings) {
-            pagar();
+            ispagado = pagar();
             return null;
         }
 
