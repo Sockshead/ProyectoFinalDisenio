@@ -21,7 +21,7 @@ public class MetodoPago extends AppCompatActivity {
         id=getIntent().getExtras().getString("id");
         System.out.println("ID ALETOSO "+id);
 
-        pagoe = findViewById(R.id.pagoenefectivo);
+        pagoe = findViewById(R.id.pagodebito);
         pagol = findViewById(R.id.pagoelectronico);
 
         pagoe.setOnClickListener(new View.OnClickListener() {
@@ -38,7 +38,7 @@ public class MetodoPago extends AppCompatActivity {
         pagol.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent menu = new Intent(MetodoPago.this,PagoCredito.class);
+                Intent menu = new Intent(MetodoPago.this,PagoElectronico.class);
                 menu.putExtra("Session",session);
                 menu.putExtra("Concepto",concepto);
                 menu.putExtra("id",id);

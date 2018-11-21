@@ -63,15 +63,13 @@ public class Facade {
 	}
 
 
-	public ArrayList<IPago> listarPagos(String id,long sesion) {
+	public ArrayList<IPago> listarPagos(long sesion) {
 		System.out.println("lista");
 		ArrayList<IPago> lista = new ArrayList();
 		for (long ses:Sesiones) {
 			if(sesion==ses) {
 				for(IPago pago:pagos) {
-					if(pago.getUsuarioPaga().equals(id)) {
 						lista.add(pago);
-					}
 				}
 				return lista;
 			}
@@ -79,13 +77,4 @@ public class Facade {
 		return null;
 	}
 
-
-	public ArrayList<IPago> listarTPagos(long sesion) {
-		for (long ses:Sesiones) {
-			if(sesion==ses) {
-				return pagos;
-			}
-		}
-		return null;
-	}
 }

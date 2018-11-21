@@ -26,6 +26,8 @@ import static java.lang.System.in;
 public class ListaPagosRealizados extends AppCompatActivity {
 
     ListView lvl;
+    long session;
+    String id;
     JSONObject datos; /*= {
             {"Fecha: ","Destinatario: ","Causa: "}
     };*/
@@ -34,7 +36,8 @@ public class ListaPagosRealizados extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_pagos_realizados);
-
+        session=getIntent().getExtras().getLong("Session");
+        id=getIntent().getExtras().getString("id");
         lvl = findViewById(R.id.lvPagos);
         InvocarServicioListaPagos ws = new InvocarServicioListaPagos();
         ws.execute();
@@ -48,7 +51,7 @@ public class ListaPagosRealizados extends AppCompatActivity {
         protected String doInBackground(String... params) {
             StringBuilder result = new StringBuilder();
             try {
-                URL url = new URL("https://pagoswheels.appspot.com/_ah/api/proxy/v3/ipago");
+                URL url = new URL("https://daproyectofinal.appspot.com/_ah/api/proxy/v3/ipago/"+session);
                 urlConnection = (HttpURLConnection) url.openConnection();
                 InputStream in = new BufferedInputStream(urlConnection.getInputStream());
                 BufferedReader reader = new BufferedReader(new InputStreamReader(in));
@@ -83,12 +86,19 @@ public class ListaPagosRealizados extends AppCompatActivity {
         try {
             List<String> contes = new ArrayList<String>();
             JSONObject obj = new JSONObject(msgjson);
-            JSONArray lista = obj.optJSONArray("contenidos");
+            JSONArray lista = obj.optJSONArray("items");
+            System.out.println(lista.length());
 
             for (int i = 0; i < lista.length(); i++) {
                 JSONObject json_data = lista.getJSONObject(i);
-                String conte = json_data.getString("fecha: ") + " " + json_data.getString("usuarioPagado: ") + " " + json_data.getString("concepto: ");
-                contes.add(conte);
+                String paga = json_data.get("usuarioPaga").toString();
+                String conte ="Fecha: "+ json_data.getString("fecha") + "\nUsuario Pagado: "
+                        + json_data.getString("usuarioPagado") + "\nConcepto: " + json_data.getString("concepto")
+                        +"\nValor: "+json_data.getString("valor");
+                if(paga.equals(id)){
+                    contes.add(conte);
+                }
+
             }
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, contes);
             lvl.setAdapter(adapter);
