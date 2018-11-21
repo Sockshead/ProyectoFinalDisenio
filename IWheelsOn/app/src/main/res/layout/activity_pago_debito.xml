@@ -24,7 +24,7 @@
         app:layout_constraintVertical_bias="0.0" />
     <View
         android:id="@+id/letramenupago"
-        android:layout_width="109dp"
+        android:layout_width="165dp"
         android:layout_height="44dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
@@ -32,22 +32,24 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/letrapagoefectivo"
+        android:background="@drawable/pagodebitoletra"
         app:layout_constraintBottom_toBottomOf="@+id/indicadormenu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.666" />
 
+
     <TextView
         android:id="@+id/verpago"
         android:layout_width="360dp"
-        android:layout_height="84dp"
+        android:layout_height="167dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="192dp"
         android:background="@drawable/verpago"
         android:padding="50dp"
         android:paddingStart="100dp"
@@ -59,32 +61,33 @@
         android:text="@string/aqui_va_lo_que_se_debe_pagar"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/letras"
-        android:layout_width="233dp"
-        android:layout_height="81dp"
+        android:layout_width="289dp"
+        android:layout_height="114dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="28dp"
-        android:background="@drawable/letra"
-        app:layout_constraintBottom_toTopOf="@+id/confirmarpago"
+        android:layout_marginBottom="84dp"
+        android:background="@drawable/letradebito"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent" />
-
     <Button
         android:id="@+id/confirmarpago"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="84dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/iniciarsesionscuadradito"
         android:text="@string/confirmar"
         android:textColor="#FFFFFF"
@@ -99,14 +102,16 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:autofillHints=""
         android:ems="10"
-        android:hint="Numero de cuenta"
+        android:hint="@string/numero_de_cuenta"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/letras"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.562"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/verpago"
-        app:layout_constraintVertical_bias="0.225" />
+        app:layout_constraintVertical_bias="0.166"
+        tools:targetApi="o" />
 
 </android.support.constraint.ConstraintLayout>
