@@ -22,7 +22,8 @@
         <activity android:name=".MetodoPago" />
         <activity android:name=".PagoEfectivo" />
         <activity android:name=".PagoDebito" />
-        <activity android:name=".PagoCredito"></activity>
+        <activity android:name=".PagoCredito" />
+        <activity android:name=".PagoElectronico"></activity>
     </application>
 
 </manifest>

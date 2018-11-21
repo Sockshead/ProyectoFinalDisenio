@@ -14,4 +14,10 @@
     <string name="pago_electronico">Pago Electronico</string>
     <string name="aqui_va_lo_que_se_debe_pagar">Aqui va lo que se debe pagar</string>
     <string name="confirmar">Confirmar</string>
+    <string name="numero_de_cuenta">Numero de cuenta</string>
+    <string name="cuotas">Cuotas</string>
+    <string name="numero_tarjeta">Numero Tarjeta</string>
+    <string name="codigo_de_seguridad">Codigo de seguridad</string>
+    <string name="pago_con_tarjeta_debito">Pago con tarjeta debito</string>
+    <string name="pago_con_tarjeta_de_credito">Pago con tarjeta de credito</string>
 </resources>
