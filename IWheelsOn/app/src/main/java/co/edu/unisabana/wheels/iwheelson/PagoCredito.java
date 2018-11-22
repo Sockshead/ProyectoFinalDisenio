@@ -42,6 +42,7 @@ public class PagoCredito extends AppCompatActivity{
     EditText txTarjeta;
     EditText txtSegu;
     String numTarjeta;
+    TextView tvalor;
     String segucode;
     int numCuotas;
     String cuotas;
@@ -65,6 +66,8 @@ public class PagoCredito extends AppCompatActivity{
         usuarioP=getIntent().getExtras().getString("id");
         txTarjeta = findViewById(R.id.mTarjeta);
         txtSegu = findViewById(R.id.mSegu);
+        tvalor = findViewById(R.id.verpago);
+        tvalor.setText("3500");
         confirmarP = findViewById(R.id.confirmarpago2);
         System.out.println("Sesion: "+session+" Concepto "+ concepto);
 
@@ -125,6 +128,20 @@ public class PagoCredito extends AppCompatActivity{
         @Override
         protected void onPostExecute(Void aVoid) {
             System.out.println("Sesion "+session);
+            if(ispagado){
+                Toast.makeText(PagoCredito.this,"Pago Realizado con exito!!",Toast.LENGTH_LONG).show();
+                Intent menu = new Intent(PagoCredito.this,MenuPrincipalNuevo.class);
+                menu.putExtra("Session",session);
+                menu.putExtra("IdUsuario",usuarioP);
+                PagoCredito.this.startActivity(menu);
+            }
+            else{
+                Toast.makeText(PagoCredito.this,"No se pudo realizar el pago",Toast.LENGTH_LONG).show();
+                Intent menu = new Intent(PagoCredito.this,MenuPrincipalNuevo.class);
+                menu.putExtra("Session",session);
+                menu.putExtra("IdUsuario",usuarioP);
+                PagoCredito.this.startActivity(menu);
+            }
 
         }
     }
@@ -133,7 +150,7 @@ public class PagoCredito extends AppCompatActivity{
         boolean pag=false;
         Random ran = new Random();
         referencia = String.valueOf(ran.nextInt());
-        pagado = "54321";
+        pagado = "169701";
         URL url = null;
         long sesion;
 
@@ -174,6 +191,7 @@ public class PagoCredito extends AppCompatActivity{
                     response += line;
                 }
                 JSONObject respuesta = new JSONObject(response);
+                pag=true;
             } else
 
             {

@@ -57,20 +57,8 @@ public class PagoEfectivo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 new EndpointsAsyncTask().execute();
-                if(ispagado){
-                    Toast.makeText(PagoEfectivo.this,"Pago Realizado con exito!!",Toast.LENGTH_LONG).show();
-                    Intent menu = new Intent(PagoEfectivo.this,MenuPrincipalNuevo.class);
-                    menu.putExtra("Session",session);
-                    menu.putExtra("IdUsuario",usuarioP);
-                    PagoEfectivo.this.startActivity(menu);
-                }
-                else{
-                    Toast.makeText(PagoEfectivo.this,"No se pudo realizar el pago",Toast.LENGTH_LONG).show();
-                    Intent menu = new Intent(PagoEfectivo.this,MenuPrincipalNuevo.class);
-                    menu.putExtra("Session",session);
-                    menu.putExtra("IdUsuario",usuarioP);
-                    PagoEfectivo.this.startActivity(menu);
-                }
+                System.out.println(ispagado);
+
 
             }
         });
@@ -91,6 +79,20 @@ public class PagoEfectivo extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             System.out.println("Sesion "+session);
+            if(ispagado){
+                Toast.makeText(PagoEfectivo.this,"Pago Realizado con exito!!",Toast.LENGTH_LONG).show();
+                Intent menu = new Intent(PagoEfectivo.this,MenuPrincipalNuevo.class);
+                menu.putExtra("Session",session);
+                menu.putExtra("IdUsuario",usuarioP);
+                PagoEfectivo.this.startActivity(menu);
+            }
+            else{
+                Toast.makeText(PagoEfectivo.this,"No se pudo realizar el pago",Toast.LENGTH_LONG).show();
+                Intent menu = new Intent(PagoEfectivo.this,MenuPrincipalNuevo.class);
+                menu.putExtra("Session",session);
+                menu.putExtra("IdUsuario",usuarioP);
+                PagoEfectivo.this.startActivity(menu);
+            }
 
         }
     }
@@ -100,7 +102,7 @@ public class PagoEfectivo extends AppCompatActivity {
         Random ran = new Random();
         valor = tvalor.getText().toString();
         referencia = String.valueOf(ran.nextInt());
-        pagado = "54321";
+        pagado = "169701";
         URL url = null;
         long sesion;
 
@@ -141,6 +143,7 @@ public class PagoEfectivo extends AppCompatActivity {
                     response += line;
                 }
                 JSONObject respuesta = new JSONObject(response);
+                pag=true;
             } else
 
             {
@@ -149,7 +152,7 @@ public class PagoEfectivo extends AppCompatActivity {
             }
             System.out.println(response);
 
-
+            System.out.println(pag);
             return pag;
 
 
