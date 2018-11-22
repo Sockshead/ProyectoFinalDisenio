@@ -19,11 +19,12 @@ public class Facade {
     }
 	
 	
-	public void guardarSesion(Session session) {
+	public Session guardarSesion(Session session) {
 		Sesiones.add(session.getSession());
+		return session;
 	}
 	
-	public IPago pagoEfectivo (long session,Pago pago,String date) {
+	public IPago pagoEfectivo (long session,Pago pago,String date) throws Exception{
 		Pago pag = (Pago) pago; 
 		IPago com= new Efectivo(pago);
 		com.setValores(date);
@@ -33,10 +34,10 @@ public class Facade {
 				return com;
 			}
 		}
-		return null;
+		throw new Exception("Error no se pudo realizar el pago en efectivo"); 
 	}
 	
-	public IPago pagoDebito (long session,Pago pago,String datos) {
+	public IPago pagoDebito (long session,Pago pago,String datos) throws Exception {
 		Pago pag = (Pago) pago; 
 		IPago com= new Debito(pago);
 		com.setValores(datos);
@@ -46,10 +47,10 @@ public class Facade {
 				return com;
 			}
 		}
-		return null;
+		throw new Exception("Error no se pudo realizar el pago en debito"); 
 	}
 	
-	public IPago pagoCredito (long session,Pago pago,String datos) {
+	public IPago pagoCredito (long session,Pago pago,String datos) throws Exception {
 		Pago pag = (Pago) pago; 
 		IPago com= new Credito(pago);
 		com.setValores(datos);
@@ -59,11 +60,11 @@ public class Facade {
 				return com;
 			}
 		}
-		return null;
+		throw new Exception("Error no se pudo realizar el pago en credito"); 
 	}
 
 
-	public ArrayList<IPago> listarPagos(long sesion) {
+	public ArrayList<IPago> listarPagos(long sesion) throws Exception {
 		System.out.println("lista");
 		ArrayList<IPago> lista = new ArrayList();
 		for (long ses:Sesiones) {
@@ -74,7 +75,7 @@ public class Facade {
 				return lista;
 			}
 		}
-		return null;
+		throw new Exception("Error no se pudo devolver la lista de pagos"); 
 	}
 
 }

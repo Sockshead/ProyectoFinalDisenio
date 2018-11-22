@@ -18,29 +18,29 @@ public class Proxy implements IProxy {
 	}
 
 	@Override
-	public Session auth(String user, String pass) {
+	public Session auth(String user, String pass) throws Exception {
 		Random ran = new Random();
-		long sesion;
+		long sesion,sess;
 		for (IUsuario us : usuarios) {
 			if (us.getCorreo().equals(user)&&us.getPass().equals(pass)) {
 				Session session = new Session();
 				sesion = ran.nextLong();
-				if(sesion<=0) {
+				if(sesion<0) {
 					sesion=sesion*(-1);
 				}
-				session.setSession(ran.nextLong());
+				session.setSession(sesion);
 				session.setId(us.getId());
-				facade.guardarSesion(session);
-				return session;
+				
+				return facade.guardarSesion(session);
 			}
 
 		}
 
-		return null;
+		throw new Exception("Error sesion no encontrada"); 
 	}
 
 	@Override
-	public void crearPasajero(String correo, String password, String nombre, String apellido, int edad, String id) {
+	public boolean crearPasajero(String correo, String password, String nombre, String apellido, int edad, String id) {
 		IUsuario user=new Pasajero();
 		user.setCorreo(correo);
 		user.setPass(password);
@@ -48,11 +48,11 @@ public class Proxy implements IProxy {
 		user.setApellido(apellido);
 		user.setEdad(edad);
 		user.setId(id);
-		usuarios.add(user);
+		return usuarios.add(user);
 	}
 
 	@Override
-	public void crearConductor(String correo, String password, String nombre, String apellido, int edad, String id) {
+	public boolean crearConductor(String correo, String password, String nombre, String apellido, int edad, String id) {
 		IUsuario user=new Conductor();
 		user.setCorreo(correo);
 		user.setPass(password);
@@ -60,7 +60,7 @@ public class Proxy implements IProxy {
 		user.setApellido(apellido);
 		user.setEdad(edad);
 		user.setId(id);
-		usuarios.add(user);
+		return usuarios.add(user);
 	}
 	
 	
