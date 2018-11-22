@@ -40,7 +40,7 @@ public class ProxyUTest {
 		try {
 			ses = proxy.auth("mate", "12345");
 		} catch (Exception e) {
-			assertEquals(e.getMessage(),"Error sesion no encontrada");
+			assertEquals("Error sesion no encontrada",e.getMessage());
 		}
 	}
 	
