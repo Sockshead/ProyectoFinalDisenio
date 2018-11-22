@@ -24,7 +24,7 @@ public class testUProxy {
 		proxy.crearPasajero("mate.balles", "12345", "Julian", "Ballesteros", 21, "987654");
 		Session ses = proxy.auth("mate.balles", "12345");
 		assertNotNull("La sesion no deberia ser nula",ses);
-		assertEquals(ses.getId(),"9876543");
+		assertEquals(ses.getId(),"987654");
 	}
 	
 	@Test
