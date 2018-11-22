@@ -76,27 +76,27 @@ public class Echo {
 //Test
 
 	@ApiMethod(name = "Auth")
-	public Session auth(Login log) {
+	public Session auth(Login log) throws Exception {
 		return proxy.auth(log.getUser(), log.getPassword());
 	}
 
 	@ApiMethod(name = "PagoEfectivo")
-	public IPago pagoEfectivo(@Named("session") long sesion, @Named("date") String date, Pago pago) {
+	public IPago pagoEfectivo(@Named("session") long sesion, @Named("date") String date, Pago pago) throws Exception  {
 		return facade.pagoEfectivo(sesion, pago, date);
 	}
 
 	@ApiMethod(name = "PagoDebito")
-	public IPago pagoDebito(@Named("session") long sesion, @Named("datos") String datos, Pago pago) {
+	public IPago pagoDebito(@Named("session") long sesion, @Named("datos") String datos, Pago pago) throws Exception {
 		return facade.pagoDebito(sesion, pago, datos);
 	}
 
 	@ApiMethod(name = "PagoCredito")
-	public IPago pagoCredito(@Named("session") long sesion, @Named("datos") String datos, Pago pago) {
+	public IPago pagoCredito(@Named("session") long sesion, @Named("datos") String datos, Pago pago)throws Exception {
 		return facade.pagoCredito(sesion, pago, datos);
 	}
 
 	@ApiMethod(name = "ListPagos")
-	public ArrayList<IPago> listPagos(@Named("session") long sesion) {
+	public ArrayList<IPago> listPagos(@Named("session") long sesion)throws Exception {
 		return facade.listarPagos(sesion);
 	}
 
