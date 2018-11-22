@@ -31,5 +31,14 @@ public class PagosMenu extends AppCompatActivity {
 
             }
         });
+        bpagosr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent menu = new Intent(PagosMenu.this,ListaPagosRecibidos.class);
+                menu.putExtra("Session",session);
+                menu.putExtra("id",id);
+                PagosMenu.this.startActivity(menu);
+            }
+        });
     }
 }

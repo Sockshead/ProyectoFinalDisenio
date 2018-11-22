@@ -23,10 +23,11 @@
         <activity android:name=".PagoEfectivo" />
         <activity android:name=".PagoDebito" />
         <activity android:name=".PagoCredito" />
-        <activity android:name=".ListaPagosRealizados"></activity>
+        <activity android:name=".ListaPagosRealizados" />
         <activity android:name=".PagoElectronico" />
         <activity android:name=".MenuPrincipalNuevo" />
-        <activity android:name=".PagosMenu"></activity>
+        <activity android:name=".PagosMenu" />
+        <activity android:name=".ListaPagosRecibidos"></activity>
     </application>
 
 </manifest>

@@ -67,19 +67,19 @@ public class testIDebito {
 	}
 
 	@Test
-	public void testTarjetaPago1() {
+	public void testCuentaPago1() {
 		setupEscenario1();
 		assertEquals("El numero de cuenta debe coincidir con la ingresada.", "1234567898745632", pagoD.getNumCuenta());
 	}
 
 	@Test
-	public void testTarjetaPago2() {
+	public void testCuentaPago2() {
 		setupEscenario2();
 		assertEquals("El numero de cuenta debe coincidir con la ingresada.", "9876543212365478", pagoD.getNumCuenta());
 	}
 
 	@Test
-	public void testTarjetaPago3() {
+	public void testCuentaPago3() {
 		setupEscenario3();
 		assertEquals("El numero de cuenta debe coincidir con la ingresada.", "6547539512584560", pagoD.getNumCuenta());
 	}
