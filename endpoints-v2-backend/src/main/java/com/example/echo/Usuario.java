@@ -3,7 +3,7 @@ package com.example.echo;
 public abstract class Usuario implements IUsuario {
 
 	
-	 private String Correo;
+	 	private String Correo;
 	    private String Pass;
 	    private String nombre;
 	    private String apellido;
