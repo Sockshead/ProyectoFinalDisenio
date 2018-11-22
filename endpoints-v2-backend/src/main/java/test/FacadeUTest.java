@@ -21,11 +21,6 @@ public class FacadeUTest {
 		ses.setId("1015678");
 		Session prueba = facade.guardarSesion(ses);
 		assertEquals("El numero de sesion deberia ser el mismo",ses.getSession(),prueba.getSession());
-		assertEquals("El ID deberia ser el mismo",ses.getId(),prueba.getId());
-		
+		assertEquals("El ID deberia ser el mismo",ses.getId(),prueba.getId());	
 	}
-	
-		
-		
-
 }
