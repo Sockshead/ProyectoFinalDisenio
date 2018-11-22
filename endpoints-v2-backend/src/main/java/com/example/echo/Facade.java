@@ -47,7 +47,7 @@ public class Facade {
 				return com;
 			}
 		}
-		throw new Exception("Error no se pudo realizar el pago en debito"); 
+		throw new Exception("Error no se pudo realizar el pago por debito"); 
 	}
 	
 	public IPago pagoCredito (long session,Pago pago,String datos) throws Exception {
@@ -60,12 +60,11 @@ public class Facade {
 				return com;
 			}
 		}
-		throw new Exception("Error no se pudo realizar el pago en credito"); 
+		throw new Exception("Error no se pudo realizar el pago por credito"); 
 	}
 
 
 	public ArrayList<IPago> listarPagos(long sesion) throws Exception {
-		System.out.println("lista");
 		ArrayList<IPago> lista = new ArrayList();
 		for (long ses:Sesiones) {
 			if(sesion==ses) {
