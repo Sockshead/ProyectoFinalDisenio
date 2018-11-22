@@ -47,7 +47,7 @@ public class PagoDebito extends AppCompatActivity {
         concepto = getIntent().getExtras().getString("Concepto");
         usuarioP = getIntent().getExtras().getString("id");
         tvalor = findViewById(R.id.verpago);
-        tvalor.setText("3000");
+        tvalor.setText("4000");
         mEdit = findViewById(R.id.txtCuentaDeb);
         confirmarP = findViewById(R.id.confirmarpago);
         System.out.println("Sesion: " + session + " Concepto " + concepto);
@@ -61,20 +61,7 @@ public class PagoDebito extends AppCompatActivity {
                 numCuenta = mEdit.getText().toString();
 
                 System.out.println(numCuenta+" 2 print");
-                if(ispagado){
-                    Toast.makeText(PagoDebito.this,"Pago Realizado con exito!!",Toast.LENGTH_LONG).show();
-                    Intent menu = new Intent(PagoDebito.this,MenuPrincipalNuevo.class);
-                    menu.putExtra("Session",session);
-                    menu.putExtra("IdUsuario",usuarioP);
-                    PagoDebito.this.startActivity(menu);
-                }
-                else{
-                    Toast.makeText(PagoDebito.this,"No se pudo realizar el pago",Toast.LENGTH_LONG).show();
-                    Intent menu = new Intent(PagoDebito.this,MenuPrincipalNuevo.class);
-                    menu.putExtra("Session",session);
-                    menu.putExtra("IdUsuario",usuarioP);
-                    PagoDebito.this.startActivity(menu);
-                }
+
             }
         });
     }
@@ -92,6 +79,20 @@ public class PagoDebito extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             System.out.println("Sesion " + session);
+            if(ispagado){
+                Toast.makeText(PagoDebito.this,"Pago Realizado con exito!!",Toast.LENGTH_LONG).show();
+                Intent menu = new Intent(PagoDebito.this,MenuPrincipalNuevo.class);
+                menu.putExtra("Session",session);
+                menu.putExtra("IdUsuario",usuarioP);
+                PagoDebito.this.startActivity(menu);
+            }
+            else{
+                Toast.makeText(PagoDebito.this,"No se pudo realizar el pago",Toast.LENGTH_LONG).show();
+                Intent menu = new Intent(PagoDebito.this,MenuPrincipalNuevo.class);
+                menu.putExtra("Session",session);
+                menu.putExtra("IdUsuario",usuarioP);
+                PagoDebito.this.startActivity(menu);
+            }
 
         }
     }
@@ -101,7 +102,7 @@ public class PagoDebito extends AppCompatActivity {
         Random ran = new Random();
         valor = tvalor.getText().toString();
         referencia = String.valueOf(ran.nextInt());
-        pagado = "54321";
+        pagado = "169701";
         URL url = null;
         long sesion;
 
@@ -141,6 +142,7 @@ public class PagoDebito extends AppCompatActivity {
                     response += line;
                 }
                 JSONObject respuesta = new JSONObject(response);
+                pag=true;
             } else
 
             {
