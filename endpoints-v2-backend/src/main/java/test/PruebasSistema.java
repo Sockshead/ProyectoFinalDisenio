@@ -38,7 +38,7 @@ public class PruebasSistema {
 	}
 
 	@Test
-	public void pagoEfectivo() {
+	public void pagoSEfectivo() {
 		setupEscenario2();
 		try {
 			ses = proxy.auth("mate.balles", "12345");
@@ -57,7 +57,7 @@ public class PruebasSistema {
 	}
 
 	@Test
-	public void pagoEfectivo2() {
+	public void pagoSEfectivo2() {
 		setupEscenario2();
 		try {
 			ses = proxy.auth("mate.balles", "12345");
@@ -67,7 +67,7 @@ public class PruebasSistema {
 		try {
 			IPago result;
 			pago.setValores("3000,4567655," + ses.getId() + ",12345,Viaje");
-			result = facade.pagoEfectivo(ses.getSession() + 1, (Pago) pago, "11-19-18");
+			result = facade.pagoEfectivo(ses.getSession()+1 , (Pago) pago, "11-19-18");
 		} catch (Exception e) {
 			assertEquals("Error no se pudo realizar el pago en efectivo", e.getMessage());
 		}
@@ -75,7 +75,7 @@ public class PruebasSistema {
 	}
 
 	@Test
-	public void pagoDebito() {
+	public void pagoSDebito() {
 		setupEscenario2();
 		try {
 			ses = proxy.auth("mate.balles", "12345");
@@ -86,7 +86,7 @@ public class PruebasSistema {
 			IPago result;
 			pago.setValores("3000,4567655," + ses.getId() + ",12345,Viaje");
 			result = facade.pagoDebito(ses.getSession(), (Pago) pago, "11-19-18,89327548");
-			assertEquals("El usuario que paga debe ser la mismo", pago.getUsuarioPaga(), result.getUsuarioPaga());
+			assertEquals("El usuario que paga debe ser el mismo", pago.getUsuarioPaga(), result.getUsuarioPaga());
 		} catch (Exception e) {
 			fail("Se debio realizar el pago debito");
 		}
@@ -94,7 +94,7 @@ public class PruebasSistema {
 	}
 
 	@Test
-	public void pagoDebito2() {
+	public void pagoSDebito2() {
 		setupEscenario2();
 		try {
 			ses = proxy.auth("mate.balles", "12345");
@@ -112,7 +112,7 @@ public class PruebasSistema {
 	}
 
 	@Test
-	public void pagoCredito() {
+	public void pagoSCredito() {
 		setupEscenario2();
 		try {
 			ses = proxy.auth("mate.balles", "12345");
@@ -123,7 +123,7 @@ public class PruebasSistema {
 			IPago result;
 			pago.setValores("3000,4567655," + ses.getId() + ",12345,Viaje");
 			result = facade.pagoCredito(ses.getSession(), (Pago) pago, "11-19-18,456788834032,555,2");
-			assertEquals("El usuario que pagado debe ser la mismo", pago.getUsuarioPagado(), result.getUsuarioPagado());
+			assertEquals("El usuario pagado debe ser el mismo", pago.getUsuarioPagado(), result.getUsuarioPagado());
 		} catch (Exception e) {
 			fail("Se debio realizar el pago credito");
 		}
@@ -131,7 +131,7 @@ public class PruebasSistema {
 	}
 
 	@Test
-	public void pagoCredito2() {
+	public void pagoSCredito2() {
 		setupEscenario2();
 		try {
 			ses = proxy.auth("mate.balles", "12345");
