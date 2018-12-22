@@ -108,7 +108,7 @@ public class PagoDebito extends AppCompatActivity {
 
 
         try {
-            url = new URL("https://daproyectofinal.appspot.com/_ah/api/proxy/v3/pagoDebito/" + session + "/" + fecha +"%2C"+ numCuenta);
+            url = new URL("https://disenioarqproyecto.appspot.com/_ah/api/proxy/v3/pagoDebito/" + session + "/" + fecha +"%2C"+ numCuenta);
             System.out.println(url);
             String response = "";
             HttpURLConnection con = (HttpURLConnection) url.openConnection();

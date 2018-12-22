@@ -28,7 +28,7 @@
 
     <!-- [START env_variables] -->
     <env-variables>
-        <env-var name="ENDPOINTS_SERVICE_NAME" value="daproyectofinal.appspot.com" />
+        <env-var name="ENDPOINTS_SERVICE_NAME" value="disenioarqproyecto.appspot.com" />
     </env-variables>
     <!-- [END env_variables] -->
 </appengine-web-app>

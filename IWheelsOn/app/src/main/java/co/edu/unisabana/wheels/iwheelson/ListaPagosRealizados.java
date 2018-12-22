@@ -51,7 +51,7 @@ public class ListaPagosRealizados extends AppCompatActivity {
         protected String doInBackground(String... params) {
             StringBuilder result = new StringBuilder();
             try {
-                URL url = new URL("https://daproyectofinal.appspot.com/_ah/api/proxy/v3/ipago/"+session);
+                URL url = new URL("https://disenioarqproyecto.appspot.com/_ah/api/proxy/v3/ipago/"+session);
                 urlConnection = (HttpURLConnection) url.openConnection();
                 InputStream in = new BufferedInputStream(urlConnection.getInputStream());
                 BufferedReader reader = new BufferedReader(new InputStreamReader(in));
